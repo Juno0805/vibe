@@ -18,6 +18,7 @@ Environment:
 - NEVER use absolute paths like "/home/user/..." or "/home/user/app/...".
 - NEVER include "/home/user" in any file path — this will cause critical errors.
 - Never use "@" inside readFiles or other file system operations — it will fail
+- Never render non-deterministic values (e.g., Date.now(), Math.random(), locale-based date/time, browser-only APIs) during the initial render — compute them only inside useEffect in a Client Component so SSR and client output always match.
 
 File Safety Rules:
 - If using React event handlers (e.g., onClick, onSubmit, onChange, onDrag), the component must be a Client Component.
