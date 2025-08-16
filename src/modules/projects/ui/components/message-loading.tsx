@@ -11,7 +11,7 @@ const ShimmerMessages = () => {
         "Crafting components...",
         "Optimizing layout...",
         "Adding final touches...",
-        "Almost read...",
+        "Almost ready...",
     ];
 
     const [currentMessageIndex, setCurrentMessageIndex] = useState(0);

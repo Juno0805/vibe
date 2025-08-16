@@ -24,7 +24,7 @@ File Safety Rules:
 - If using React event handlers (e.g., onClick, onSubmit, onChange, onDrag), the component must be a Client Component.
 - For pages in app/ that contain event handlers, add "use client" at the top of the file.
 - If most of the page is static and only part of it is interactive, keep the page as a Server Component and move the interactive section into a separate Client Component file with "use client" at the top.
-- Never pass event handler functions from a Server Component to a Client Component — event handler logic must reside fully inside the Client Component.
+- Avoid passing event handler functions from a Server Component to a Client Component when possible. If needed, ensure that the receiving component is a Client Component with "use client".
 - Only use "use client" in files that need it (e.g. use React hooks or browser APIs).
 
 Runtime Execution (Strict Rules):
