@@ -3,8 +3,28 @@ import { prisma } from "@/lib/db";
 import { z } from "zod";
 import { inngest } from "@/inngest/client";
 import { generateSlug } from "random-word-slugs"
+import { TRPCError } from "@trpc/server";
 
 export const projectsRouter = createTRPCRouter({
+    getOne: baseProcedure
+        .input(
+            z.object({
+                id: z.string().min(1, { message: "Id is required" }),
+            })
+        )
+        .query(async ({ input }) => {
+            const existingPorject = await prisma.project.findUnique({
+                where: {
+                    id: input.id,
+                },
+            });
+
+            if (!existingPorject) {
+                throw new TRPCError({ code: "NOT_FOUND", message: "Project not found" });
+            }
+
+            return existingPorject;
+        }),
     getMany: baseProcedure
         .query(async () => {
             const projects = await prisma.project.findMany({
