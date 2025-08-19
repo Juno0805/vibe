@@ -7,8 +7,10 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useTRPC } from "@/trpc/client";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 
 export const ProjectsList = () => {
+    const { resolvedTheme } = useTheme();
     const trpc = useTRPC();
     const { data: projects } = useQuery(trpc.projects.getMany.queryOptions());
 
@@ -36,7 +38,7 @@ export const ProjectsList = () => {
                         <Link href={`/projects/${project.id}`}>
                             <div className="flex items-center gap-x-4">
                                 <Image 
-                                    src="/logo.svg"
+                                    src="/logo_light.svg"
                                     alt="Coding Cat"
                                     width={32}
                                     height={32}

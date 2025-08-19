@@ -5,6 +5,7 @@ import { Fragment, MessageRole, MessageType } from "@/generated/prisma";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { ChevronRightIcon, Code2Icon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 interface UserMessageProps {
     content: string;
@@ -73,6 +74,7 @@ const AssistantMessage = ({
     onFragmentClick,
     type,
 }: AssistantMessageProps) => {
+
     return (
         <div className={cn(
             "flex flex-col group px-2 pb-4",
@@ -80,7 +82,7 @@ const AssistantMessage = ({
         )}>
             <div className="flex items-center gap-2 pl-2 mb-2">
                 <Image
-                    src="/logo.svg"
+                    src="/logo_light.svg"
                     alt="Coding Cat"
                     width={18}
                     height={18}

@@ -1,3 +1,4 @@
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -34,11 +35,12 @@ const ShimmerMessages = () => {
 };
 
 export const MessageLoading = () => {
+
     return (
         <div className="flex flex-col group px-2 pb-4">
             <div className="lex items-center gap-2 pl-2 mb-2">
                 <Image
-                    src="/logo.svg"
+                    src="/logo_light.svg"
                     alt="Coding Cat"
                     width={18}
                     height={18}
