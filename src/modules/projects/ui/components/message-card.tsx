@@ -1,11 +1,9 @@
-import { format } from "date-fns";
-
-import { Card } from "@/components/ui/card";
-import { Fragment, MessageRole, MessageType } from "@/generated/prisma";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { Card } from "@/components/ui/card";
 import { ChevronRightIcon, Code2Icon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Fragment, MessageRole, MessageType } from "@/generated/prisma";
 
 interface UserMessageProps {
     content: string;
@@ -82,7 +80,7 @@ const AssistantMessage = ({
         )}>
             <div className="flex items-center gap-2 pl-2 mb-2">
                 <Image
-                    src="/logo_light.svg"
+                    src="/logo_dark_mode.svg"
                     alt="Coding Cat"
                     width={18}
                     height={18}

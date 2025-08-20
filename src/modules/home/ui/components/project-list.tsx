@@ -2,22 +2,24 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useUser } from "@clerk/nextjs";
+import { useTRPC } from "@/trpc/client";
 import { formatDistanceToNow} from "date-fns";
+import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 
-import { useTRPC } from "@/trpc/client";
-import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
 
 export const ProjectsList = () => {
-    const { resolvedTheme } = useTheme();
+    const { user } = useUser();
     const trpc = useTRPC();
     const { data: projects } = useQuery(trpc.projects.getMany.queryOptions());
+
+    if (!user) return null;
 
     return (
         <div className="w-full bg-white dark:bg-sidebar rounded-xl p-8 border flex flex-col gap-y-6 sm:gap-y-4">
             <h2 className="text-2xl font-semibold">
-                Saved Purrjects(Projects)
+                {user?.firstName}&apos;s Purrjects
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {projects?.length === 0 && (
@@ -38,7 +40,7 @@ export const ProjectsList = () => {
                         <Link href={`/projects/${project.id}`}>
                             <div className="flex items-center gap-x-4">
                                 <Image 
-                                    src="/logo_light.svg"
+                                    src="/logo_dark_mode.svg"
                                     alt="Coding Cat"
                                     width={32}
                                     height={32}
