@@ -1,17 +1,9 @@
 "use client"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { ProjectForm } from "@/modules/home/ui/components/project-form";
 import { ProjectsList } from "@/modules/home/ui/components/project-list";
-import { useTRPC } from "@/trpc/client";
-import { useMutation } from "@tanstack/react-query";
-import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 
-import { toast } from "sonner";
 
 const Page = () => {
 
@@ -20,7 +12,7 @@ const Page = () => {
       <section className="space-y-6 py-[16vh] 2xl:py-48">
         <div className="flex flex-col items-center">
           <Image
-              src="/logo_light.svg"
+              src="/logo_dark_mode.svg"
               alt="Coding Cat"
               width={50}
               height={50}
